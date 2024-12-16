@@ -10,32 +10,32 @@ namespace WebApp.Controllers;
 public class LoanController(IGenericService<Loan> loanService): ControllerBase
 {
     [HttpGet("GetLoans")]
-    public ApiResponse<List<Loan>> GetLoans()
+    public async Task<ApiResponse<List<Loan>>> GetLoans()
     {
-        return loanService.GetAll();
+        return await loanService.GetAll();
     }
 
     [HttpGet("GetLoan/{id}")]
-    public ApiResponse<Loan> GetLoan(int id)
+    public async Task<ApiResponse<Loan>> GetLoan(int id)
     {
-        return loanService.GetById(id);
+        return await loanService.GetById(id);
     }
 
     [HttpPost("AddLoan")]
-    public ApiResponse<bool> AddLoan(Loan loan)
+    public async Task<ApiResponse<bool>> AddLoan(Loan loan)
     {
-        return loanService.Add(loan);
+        return await loanService.Add(loan);
     }
 
     [HttpPost("UpdateLoan")]
-    public ApiResponse<bool> UpdateLoan(Loan loan)
+    public async Task<ApiResponse<bool>> UpdateLoan(Loan loan)
     {
-        return loanService.Update(loan);
+        return await loanService.Update(loan);
     }
 
     [HttpPost("DeleteLoan")]
-    public ApiResponse<bool> DeleteLoan(int id)
+    public async Task<ApiResponse<bool>> DeleteLoan(int id)
     {
-        return loanService.Delete(id);
+        return await loanService.Delete(id);
     }
 }

@@ -10,33 +10,33 @@ namespace WebApp.Controllers;
 public class BranchController(IGenericService<Branch> branchService) : ControllerBase
 {
     [HttpGet("GetBranches")]
-    public ApiResponse<List<Branch>> GetBranches()
+    public async Task<ApiResponse<List<Branch>>> GetBranches()
     {
-        return branchService.GetAll();
+        return await branchService.GetAll();
     }
 
     [HttpGet("GetBranchById")]
-    public ApiResponse<Branch> GetBranchById(int id)
+    public async Task<ApiResponse<Branch>> GetBranchById(int id)
     {
-        return branchService.GetById(id);
+        return await branchService.GetById(id);
     }
 
     [HttpPost("CreateBranch")]
-    public ApiResponse<bool> CreateBranch(Branch branch)
+    public async Task<ApiResponse<bool>> CreateBranch(Branch branch)
     {
-        return branchService.Add(branch);
+        return await branchService.Add(branch);
     }
 
     [HttpPut("UpdateBranch")]
-    public ApiResponse<bool> UpdateBranch(Branch branch)
+    public async Task<ApiResponse<bool>> UpdateBranch(Branch branch)
     {
-        return branchService.Update(branch);
+        return await branchService.Update(branch);
     }
 
     [HttpDelete("DeleteBranch")]
-    public ApiResponse<bool> DeleteBranch(int id)
+    public async Task<ApiResponse<bool>> DeleteBranch(int id)
     {
-        return branchService.Delete(id);
+        return await branchService.Delete(id);
     }
     
 }

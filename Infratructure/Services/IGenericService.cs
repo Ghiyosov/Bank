@@ -4,9 +4,9 @@ namespace Infratructure.Services;
 
 public interface IGenericService<T>
 {
-    ApiResponse<List<T>> GetAll();
-    ApiResponse<T> GetById(int id);
-    ApiResponse<bool> Add(T data);
-    ApiResponse<bool> Update(T data);
-    ApiResponse<bool> Delete(int id);
+     Task<ApiResponse<List<T>>> GetAll();
+    Task<ApiResponse<T>> GetById(int id);
+    Task<ApiResponse<bool>> Add(T data);
+    Task<ApiResponse<bool>> Update(T data);
+    Task<ApiResponse<bool>> Delete(int id);
 }

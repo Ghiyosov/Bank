@@ -10,44 +10,44 @@ namespace WebApp.Controllers;
 public class AccountController(AccountService service) : ControllerBase
 {
     [HttpGet("GetAccounts")]
-    public ApiResponse<List<Account>> GetAccounts()
+    public async Task<ApiResponse<List<Account>>> GetAccounts()
     {
-        return service.GetAll();
+        return await service.GetAll();
     }
 
     [HttpGet("GetAccount/{id}")]
-    public ApiResponse<Account> GetAccount(int id)
+    public async Task<ApiResponse<Account>> GetAccount(int id)
     {
-        return service.GetById(id);
+        return await service.GetById(id);
     }
 
     [HttpPost("CreateAccount")]
-    public ApiResponse<bool> CreateAccount(Account account)
+    public async Task<ApiResponse<bool>> CreateAccount(Account account)
     {
-        return service.Add(account);
+        return await service.Add(account);
     }
 
     [HttpPut("UpdateAccount")]
-    public ApiResponse<bool> UpdateAccount(Account account)
+    public async Task<ApiResponse<bool>> UpdateAccount(Account account)
     {
-        return service.Update(account);
+        return await service.Update(account);
     }
 
     [HttpDelete("DeleteAccount/{id}")]
-    public ApiResponse<bool> DeleteAccount(int id)
+    public async Task<ApiResponse<bool>> DeleteAccount(int id)
     {
-        return service.Delete(id);
+        return await service.Delete(id);
     }
 
     [HttpPut("ReplenishBalance/{id}")]
-    public ApiResponse<bool> ReplenishBalance(int id, decimal amount)
+    public async Task<ApiResponse<bool>> ReplenishBalance(int id, decimal amount)
     {
-        return service.ReplenishBalance(id, amount);
+        return await service.ReplenishBalance(id, amount);
     }
 
     [HttpPut("WithdrawnMony/{id}")]
-    public ApiResponse<bool> WithdrawnMony(int id,decimal mony)
+    public async Task<ApiResponse<bool>> WithdrawnMony(int id,decimal mony)
     {
-        return service.WithdrawnMony(id, mony);
+        return await service.WithdrawnMony(id, mony);
     }
 }

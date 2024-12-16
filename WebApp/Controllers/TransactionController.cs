@@ -10,44 +10,44 @@ namespace WebApp.Controllers;
 public class TransactionController(TransactionService transactionService):ControllerBase
 {
     [HttpGet("GetTransactions")]
-    public ApiResponse<List<Transaction>> GetTransactions()
+    public async Task<ApiResponse<List<Transaction>>> GetTransactions()
     {
-        return transactionService.GetAll();
+        return await transactionService.GetAll();
     }
 
     [HttpGet("GetTransactions/{id}")]
-    public ApiResponse<Transaction> GetTransaction(int id)
+    public async Task<ApiResponse<Transaction>> GetTransaction(int id)
     {
-        return transactionService.GetById(id);
+        return await transactionService.GetById(id);
     }
 
     [HttpPost("CreateTransaction")]
-    public ApiResponse<bool> CreateTransaction([FromBody] Transaction transaction)
+    public async Task<ApiResponse<bool>> CreateTransaction([FromBody] Transaction transaction)
     {
-        return transactionService.Add(transaction);
+        return await  transactionService.Add(transaction);
     }
 
     [HttpPut("UpdateTransaction")]
-    public ApiResponse<bool> UpdateTransaction([FromBody] Transaction transaction)
+    public async Task<ApiResponse<bool>> UpdateTransaction([FromBody] Transaction transaction)
     {
-        return transactionService.Update(transaction);
+        return await transactionService.Update(transaction);
     }
 
     [HttpDelete("DeleteTransaction/{id}")]
-    public ApiResponse<bool> DeleteTransaction(int id)
+    public async Task<ApiResponse<bool>> DeleteTransaction(int id)
     {
-        return transactionService.Delete(id);
+        return await transactionService.Delete(id);
     }
 
     [HttpGet("GetHistoryGet/{id}")]
-    public ApiResponse<List<string>> GetHistoryGet(int id)
+    public async Task<ApiResponse<List<string>>> GetHistoryGet(int id)
     {
-        return transactionService.GetTransactionHistorySend(id);
+        return await transactionService.GetTransactionHistorySend(id);
     }
 
     [HttpGet("GetHistoryGetByDate/{id}")]
-    public ApiResponse<List<string>> GetHistoryRe(int id)
+    public async Task<ApiResponse<List<string>>> GetHistoryRe(int id)
     {
-        return transactionService.GetTransactionHistoryReceive(id);
+        return await transactionService.GetTransactionHistoryReceive(id);
     }
 }

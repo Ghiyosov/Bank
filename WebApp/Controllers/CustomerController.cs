@@ -10,28 +10,28 @@ namespace WebApp.Controllers;
 public class CustomerController(IGenericService<Customer> customerService) : ControllerBase
 {
     [HttpGet]
-    public ApiResponse<List<Customer>> GetAll()
+    public async Task<ApiResponse<List<Customer>>> GetAll()
     {
-        return customerService.GetAll();
+        return await customerService.GetAll();
     }
     [HttpGet("{id:int}")]
-    public ApiResponse<Customer> GetById(int id)
+    public async Task<ApiResponse<Customer>> GetById(int id)
     {
-        return customerService.GetById(id);
+        return await customerService.GetById(id);
     }
     [HttpPost]
-    public ApiResponse<bool> Add(Customer customer)
+    public async Task<ApiResponse<bool>> Add(Customer customer)
     {
-        return customerService.Add(customer);
+        return await customerService.Add(customer);
     }
     [HttpPut]
-    public ApiResponse<bool> Update(Customer customer)
+    public async Task<ApiResponse<bool>> Update(Customer customer)
     {
-        return customerService.Update(customer);
+        return await customerService.Update(customer);
     }
     [HttpDelete]
-    public ApiResponse<bool> Delete(int id)
+    public async Task<ApiResponse<bool>> Delete(int id)
     {
-        return customerService.Delete(id);
+        return await customerService.Delete(id);
     }
 }
